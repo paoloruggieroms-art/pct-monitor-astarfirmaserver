@@ -1,0 +1,81 @@
+══════════════════════════════════════════
+  FIRMA DIGITALE CNS - Guida Rapida
+  Versione 1.2 (15/05/2026)
+══════════════════════════════════════════
+
+REQUISITI:
+  • Windows 10 o 11
+  • Lettore smart card USB
+  • Carta Nazionale dei Servizi (CNS)
+  • Connessione internet (solo per installazione)
+
+INSTALLAZIONE (una tantum):
+  1. Estrarre questa cartella sul Desktop o in Documenti
+  2. Cliccare con tasto destro su "InstallFirma.bat"
+     → "Esegui come amministratore"
+  3. Attendere il completamento (circa 1 minuto)
+  4. Sul Desktop apparirà il collegamento "Firma Digitale CNS"
+
+USO QUOTIDIANO:
+  • Il servizio si avvia automaticamente con Windows
+  • Se non parte, doppio click su "Firma Digitale CNS" dal Desktop
+  • Aprire la pagina Firma Digitale dal sito SIGIT Monitor
+  • Trascinare i PDF da firmare nella zona di upload
+  • Inserire il PIN della CNS e cliccare "Firma"
+  • Scaricare i file firmati singolarmente o come ZIP
+
+ESTRAZIONE DOCUMENTO:
+  • Nella pagina SIGIT Monitor è disponibile la funzione
+    "Visualizza documento firmato" (pannello azzurro)
+  • Caricare un file .p7m (CAdES) nella dropzone
+  • Cliccare "Apri documento": il servizio estrae il PDF
+    originale incapsulato e lo apre in un nuovo tab del browser
+  • Endpoint: POST http://localhost:8765/extract
+    - Invia il file come multipart/form-data (campo "file")
+    - Risposta: bytes binari del PDF estratto (application/pdf)
+    - Per CAdES (.p7m): estrae ContentInfo.Content via SignedCms
+    - Per PAdES (.pdf): restituisce il PDF direttamente
+
+VERIFICA FIRMA:
+  • Nella pagina SIGIT Monitor è ora disponibile la funzione
+    "Verifica Firma Digitale"
+  • Caricare un file .p7m (CAdES) o .pdf firmato (PAdES)
+  • Il servizio restituisce: firmatario, ente emittente, validità,
+    integrità della firma e scadenza del certificato
+  • Nota: il controllo OCSP è attualmente "skipped" (non richiede
+    connessione esterna); verrà abilitato in una versione futura
+
+FORMATI DISPONIBILI:
+  • CAdES (.p7m) - formato standard per depositi telematici
+  • PAdES (.pdf) - firma incorporata nel PDF
+
+RISOLUZIONE PROBLEMI:
+  • "Server OFFLINE": avviare il servizio dal Desktop
+  • "PIN errato": verificare il PIN della CNS (3 tentativi max!)
+  • "Smart card non rilevata": verificare che la card sia inserita
+  • "OpenSC non trovato": rieseguire InstallFirma.bat come admin
+
+SUPPORTO:
+  Per assistenza contattare lo Studio.
+
+══════════════════════════════════════════
+  CHANGELOG
+══════════════════════════════════════════
+
+v1.2 (15/05/2026):
+  + Aggiunto endpoint POST /extract per visualizzare il documento
+    originale incapsulato nel file firmato (.p7m / CAdES)
+  + Aggiornato pannello UI: "Verifica Firme" e "Visualizza documento"
+    ora affiancati (layout 2 colonne side-by-side)
+  + Aggiornato endpoint /status con lista endpoint aggiornata
+
+v1.1 (15/05/2026):
+  + Aggiunto endpoint POST /verify per verifica firma digitale
+    Supporta CAdES (.p7m) via System.Security.Cryptography.Pkcs
+    e PAdES (.pdf) con estrazione CMS da /Contents
+  + Aggiornato endpoint /status con lista endpoint disponibili
+
+v1.0 (13/05/2026):
+  + Prima versione pubblica
+  + Firma CAdES-BES e PAdES via smart card CNS
+  + Download singolo e ZIP multiplo
