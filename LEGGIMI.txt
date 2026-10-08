@@ -19,13 +19,13 @@ INSTALLAZIONE (una tantum):
 USO QUOTIDIANO:
   • Il servizio si avvia automaticamente con Windows
   • Se non parte, doppio click su "Firma Digitale CNS" dal Desktop
-  • Aprire la pagina Firma Digitale dal sito SIGIT Monitor
+  • Aprire la pagina Firma Digitale dal sito PCT Monitor
   • Trascinare i PDF da firmare nella zona di upload
   • Inserire il PIN della CNS e cliccare "Firma"
   • Scaricare i file firmati singolarmente o come ZIP
 
 ESTRAZIONE DOCUMENTO:
-  • Nella pagina SIGIT Monitor è disponibile la funzione
+  • Nella pagina PCT Monitor è disponibile la funzione
     "Visualizza documento firmato" (pannello azzurro)
   • Caricare un file .p7m (CAdES) nella dropzone
   • Cliccare "Apri documento": il servizio estrae il PDF
@@ -37,7 +37,7 @@ ESTRAZIONE DOCUMENTO:
     - Per PAdES (.pdf): restituisce il PDF direttamente
 
 VERIFICA FIRMA:
-  • Nella pagina SIGIT Monitor è ora disponibile la funzione
+  • Nella pagina PCT Monitor è ora disponibile la funzione
     "Verifica Firma Digitale"
   • Caricare un file .p7m (CAdES) o .pdf firmato (PAdES)
   • Il servizio restituisce: firmatario, ente emittente, validità,

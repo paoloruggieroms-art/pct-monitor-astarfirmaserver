@@ -5,7 +5,7 @@ title Installazione Firma Digitale CNS
 echo.
 echo  ╔══════════════════════════════════════════════╗
 echo  ║   INSTALLAZIONE FIRMA DIGITALE CNS          ║
-echo  ║   Studio Legale - SIGIT Monitor             ║
+echo  ║   Studio Legale - PCT Monitor                ║
 echo  ╚══════════════════════════════════════════════╝
 echo.
 
